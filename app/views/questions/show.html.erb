@@ -1,0 +1,26 @@
+<h1><%= @question.name %></h1>
+<h2>Summary:</h2>
+<p>
+  <%= @question.summary %>
+</p>
+<h3>Asker:</h3>
+<%= @question.asker %>
+<br>
+
+<h2>Answer Question</h2>
+<%= render 'form_answer.html' %>
+
+<% if @answers.any? %>
+<h2>Answers:</h2>
+<% @answers.each do |answer| %>
+  <p>
+    <%= answer.answer %>
+  </p>
+  <h3><%= answer.answer_giver %></h3>
+<% end %>
+<% end %>
+
+<br>
+
+<%= link_to 'Edit Question', edit_question_path(@question.id) %>
+<%= link_to 'Delete Question', "/questions/#{@question.id}", :method => 'delete' %>
